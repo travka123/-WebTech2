@@ -16,14 +16,9 @@ public class Task2 {
     }
 
     private static boolean solve(double x, double y) {
-        if ((y <= 5) && (y >= -3) &&
-                (
+        return (y <= 5) && (y >= -3) && (
                         ((x >= -4) && (x <= 4)) ||
                         ((y <= 0) && (x >= -6) && (x <= 6))
-                )
-        ) {
-            return true;
-        }
-        return false;
+               );
     }
 }
