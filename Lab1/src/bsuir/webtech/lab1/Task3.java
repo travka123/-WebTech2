@@ -15,7 +15,7 @@ public class Task3 {
         System.out.print("H: ");
         double h = scan.nextDouble();
 
-        if ((b - a > 0) == (h > 0)) {
+        if (((b - a > 0) == (h > 0)) && (h != 0)) {
             printTable(a, b, h, Math::tan);
         } else {
             System.out.println("Неверно задан шаг.");
