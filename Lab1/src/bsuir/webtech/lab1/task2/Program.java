@@ -1,8 +1,8 @@
-package bsuir.webtech.lab1;
+package bsuir.webtech.lab1.task2;
 
 import java.util.Scanner;
 
-public class Task2 {
+public class Program {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
@@ -17,8 +17,8 @@ public class Task2 {
 
     private static boolean solve(double x, double y) {
         return (y <= 5) && (y >= -3) && (
-                        ((x >= -4) && (x <= 4)) ||
+                ((x >= -4) && (x <= 4)) ||
                         ((y <= 0) && (x >= -6) && (x <= 6))
-               );
+        );
     }
 }

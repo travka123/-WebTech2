@@ -1,8 +1,8 @@
-package bsuir.webtech.lab1;
+package bsuir.webtech.lab1.task3;
 
 import java.util.Scanner;
 
-public class Task3 {
+public class Program {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
