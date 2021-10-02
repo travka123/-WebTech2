@@ -18,7 +18,7 @@ public class Program {
         printMatrix(getMatrix(mas));
     }
 
-    public static int[][] getMatrix(int[] mas) {
+    private static int[][] getMatrix(int[] mas) {
         int n = mas.length;
         int[][] mat = new int[n][n];
 
@@ -34,7 +34,7 @@ public class Program {
         return mat;
     }
 
-    public static void printMatrix(int[][] mat) {
+    private static void printMatrix(int[][] mat) {
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
                 System.out.printf("%d ", mat[i][j]);
