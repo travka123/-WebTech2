@@ -10,16 +10,16 @@ public class Program {
         System.out.print("N: ");
         int n = scan.nextInt();
 
-        Integer[] mas = new Integer[n];
+        Double[] mas = new Double[n];
         for (int i = 0; i < n; i++) {
             System.out.printf("A[%d]: ", i);
-            mas[i] = scan.nextInt();
+            mas[i] = scan.nextDouble();
         }
 
-        shellSort(mas, (Integer x,Integer y) -> x - y);
+        shellSort(mas, Double::compare);
 
         for (int i = 0; i < mas.length; i++) {
-            System.out.printf("%d ", mas[i]);
+            System.out.printf("%f ", mas[i]);
         }
         System.out.println();
     }
