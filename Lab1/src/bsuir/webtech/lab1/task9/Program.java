@@ -15,8 +15,8 @@ public class Program {
 
         bucket.put(new Ball(Color.YELLOW, 21));
 
-        System.out.printf("Вес мячиков в корзине: %.2f\n", bucket.getWeight());
-        System.out.printf("Кол-во синих мячиков в корзине: %d\n",
+        System.out.printf("The weight of the balls in the basket: %.2f\n", bucket.getWeight());
+        System.out.printf("Number of blue balls in the basket: %d\n",
                 bucket.getCountOf((b) -> b.getColor() == Color.BLUE));
     }
 }
