@@ -2,13 +2,14 @@ package bsuir.webtech.lab1.task12;
 
 import java.util.Objects;
 
-public class Book implements Cloneable {
+public class Book implements Cloneable, Comparable<Book> {
+    private long isbn;
     private String title;
     private String author;
     private int price;
     private int edition;
 
-    public Book(String author, String title, int edition, int price) {
+    public Book(long isbn, String author, String title, int edition, int price) {
         this.title = title;
         this.author = author;
         this.edition = edition;
@@ -38,5 +39,10 @@ public class Book implements Cloneable {
 
     public Book clone() throws CloneNotSupportedException {
         return (Book) super.clone();
+    }
+
+    @Override
+    public int compareTo(Book o) {
+        return Long.compare(isbn, isbn);
     }
 }
