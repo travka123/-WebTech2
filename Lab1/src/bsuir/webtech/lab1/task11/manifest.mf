@@ -1,0 +1,2 @@
+Main-Class: bsuir.webtech.lab1.task9.Program
+
