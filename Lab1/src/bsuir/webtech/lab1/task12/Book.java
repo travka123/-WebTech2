@@ -4,10 +4,25 @@ import java.util.Objects;
 
 public class Book implements Cloneable, Comparable<Book> {
     private long isbn;
-    private String title;
-    private String author;
-    private int price;
     private int edition;
+
+    private String title;
+
+    public String getTitle() {
+        return title;
+    }
+
+    private String author;
+
+    public String getAuthor() {
+        return author;
+    }
+
+    private int price;
+
+    public int getPrice() {
+        return price;
+    }
 
     public Book(long isbn, String author, String title, int edition, int price) {
         this.title = title;
