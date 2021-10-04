@@ -2,7 +2,7 @@ package bsuir.webtech.lab1.task12;
 
 import java.util.Objects;
 
-public class Book {
+public class Book implements Cloneable {
     private String title;
     private String author;
     private int price;
@@ -34,5 +34,9 @@ public class Book {
 
     public String toString() {
         return String.format("%s %s %d edition price: %d$", author, title, edition, price);
+    }
+
+    public Book clone() throws CloneNotSupportedException {
+        return (Book) super.clone();
     }
 }
