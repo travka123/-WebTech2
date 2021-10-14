@@ -4,6 +4,7 @@ import bsuir.webtech.lab2.business.ProductService;
 import bsuir.webtech.lab2.business.products.CoffeeMachine;
 import bsuir.webtech.lab2.business.products.Fridge;
 import bsuir.webtech.lab2.business.products.Kettle;
+import bsuir.webtech.lab2.business.products.TV;
 import bsuir.webtech.lab2.presentation.ConsoleViewModel;
 
 public class StartViewModel extends ConsoleViewModel {
@@ -27,7 +28,7 @@ public class StartViewModel extends ConsoleViewModel {
             case 2 -> new ProductListViewModel(this, productService, Fridge.class);
             case 3 -> new ProductListViewModel(this, productService, Kettle.class);
             case 4 -> new ProductListViewModel(this, productService, CoffeeMachine.class);
-            case 5 -> null;
+            case 5 -> new ProductListViewModel(this, productService, TV.class);
             case 0 -> null;
             default -> throw new IllegalArgumentException();
         };

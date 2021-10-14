@@ -1,10 +1,7 @@
 package bsuir.webtech.lab2.persistence;
 
 import bsuir.webtech.lab2.business.ProductRepository;
-import bsuir.webtech.lab2.business.products.CoffeeMachine;
-import bsuir.webtech.lab2.business.products.Fridge;
-import bsuir.webtech.lab2.business.products.Kettle;
-import bsuir.webtech.lab2.business.products.Product;
+import bsuir.webtech.lab2.business.products.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,7 +50,25 @@ public class StubProductDao extends ProductRepository {
                     "2400 Вт, объем 1.5 л, терморегулятор, цвет синий",
                     1.5,
                     0.25,
-                    2)
+                    2),
+
+            new TV("Телевизор Витязь 24LH1103",
+                    299,
+                    2019,
+                    "24\" 1366x768 (HD), матрица VA, частота матрицы 60 Гц, Smart TV (Android), Wi-Fi",
+                    24,
+                    "1366x768 (HD)",
+                    60),
+
+            new TV("OLED телевизор LG OLED77G1RLA",
+                    14669.00,
+                    2021,
+                    "LG OLED evo устанавливает новый стандарт. Мы усовершенствовали OLED-панель нового поколения,\n" +
+                            "добавив дополнительный слой и улучшив светящиеся элементы. Эти новшества оптимизируют структуру панели,\n" +
+                            "улучшая длину световых волн и повышая эффективность.",
+                    77,
+                    "3840x2160 (4K UHD)",
+                    120)
     );
 
     @Override
