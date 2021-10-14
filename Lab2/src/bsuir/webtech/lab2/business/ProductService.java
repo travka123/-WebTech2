@@ -13,10 +13,19 @@ public class ProductService {
         repository = productRepository;
     }
 
+    /**
+     * Get products from model
+     * @return
+     */
     public List<Product> getProducts() {
         return repository.getProducts();
     }
 
+    /**
+     * Get products from model which satisfy predicate
+     * @param predicate
+     * @return
+     */
     public List<Product> getProducts(Predicate<Product> predicate) {
         return repository.getProducts(predicate);
     }

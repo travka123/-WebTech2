@@ -11,24 +11,33 @@ public class ConsoleView {
         consoleViewModel = startState;
     }
 
-    public void show() throws IOException {
+    /**
+     * Printing and processing input in loop until user exit
+     * @throws IOException
+     */
+    public void show() {
         Scanner scanner = new Scanner(System.in);
         while (consoleViewModel != null) {
             System.out.println(consoleViewModel.getText());
-            processInput(scanner);
+            System.out.print(": ");
+            while (!tryProcessInput(scanner.nextLine())) {
+                System.out.print("Неверный ввод\n\n:");
+            }
         }
     }
 
-    private void processInput(Scanner scanner) {
-        boolean success = false;
-        do {
-            try {
-                System.out.print(": ");
-                consoleViewModel = consoleViewModel.processInput(scanner.nextLine());
-                success = true;
-            } catch (IllegalArgumentException iae) {
-                System.out.println("Неверный ввод");
-            }
-        } while (!success);
+    /**
+     * Try process input, changes current consoleViewModel ({@link ConsoleViewModel}) if necessary,
+     * return true if input process success, otherwise false
+     * @param input
+     * @return is input success
+     */
+    private boolean tryProcessInput(String input) {
+        try {
+            consoleViewModel = consoleViewModel.processInput(input);
+            return true;
+        } catch (IllegalArgumentException iae) {
+            return false;
+        }
     }
 }

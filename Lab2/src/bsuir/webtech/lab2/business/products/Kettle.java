@@ -43,6 +43,7 @@ public class Kettle extends Product {
         this.powerCordLength = powerCordLength;
     }
 
+    @Override
     public Map<String, String> getPropertiesText() {
         Map<String, String> map = super.getPropertiesText();
         map.put("Объем", volume + " л.");

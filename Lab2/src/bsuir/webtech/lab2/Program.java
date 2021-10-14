@@ -6,10 +6,12 @@ import bsuir.webtech.lab2.persistence.XMLProductDao;
 import bsuir.webtech.lab2.presentation.ConsoleView;
 import bsuir.webtech.lab2.presentation.simpleViewModels.StartViewModel;
 
-import java.io.IOException;
-
 public class Program {
-    public static void main(String[] args) throws IOException {
+    /**
+     * Entry point
+     * @param args
+     */
+    public static void main(String[] args) {
 
         //Create Products.xml with all test products
         new XMLProductDao("Products.xml").saveProducts(new StubProductDao().getProducts());

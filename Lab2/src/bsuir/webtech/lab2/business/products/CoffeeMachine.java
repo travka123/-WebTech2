@@ -43,6 +43,7 @@ public class CoffeeMachine extends Product {
         this.remoteControl = remoteControl;
     }
 
+    @Override
     public Map<String, String> getPropertiesText() {
         Map<String, String> map = super.getPropertiesText();
         map.put("Емкость для воды", String.format("%.1f л.", waterTank));

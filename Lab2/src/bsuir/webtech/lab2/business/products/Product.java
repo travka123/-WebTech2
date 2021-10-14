@@ -55,6 +55,12 @@ public abstract class Product implements java.io.Serializable {
         this.description = description;
     }
 
+    /**
+     * Get {@link Map} consisting of all property except name, price and description where
+     * Key: {@link String} property name in natural language
+     * Value: {@link String} property value
+     * @return
+     */
     public Map<String, String> getPropertiesText() {
         Map<String, String> map = new LinkedHashMap<>();
         map.put("Дата выхода на рынок", marketLaunchYear + " год");

@@ -33,6 +33,7 @@ public class Fridge extends Product {
         this.freezerVolume = freezerVolume;
     }
 
+    @Override
     public Map<String, String> getPropertiesText() {
         Map<String, String> map = super.getPropertiesText();
         map.put("Общий объём холодильной камеры", refrigeratingChamberVolume + " л.");
