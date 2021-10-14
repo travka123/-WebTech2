@@ -3,6 +3,7 @@ package bsuir.webtech.lab2.persistence;
 import bsuir.webtech.lab2.business.ProductRepository;
 import bsuir.webtech.lab2.business.products.CoffeeMachine;
 import bsuir.webtech.lab2.business.products.Fridge;
+import bsuir.webtech.lab2.business.products.Kettle;
 import bsuir.webtech.lab2.business.products.Product;
 
 import java.util.ArrayList;
@@ -36,7 +37,23 @@ public class StubProductDao extends ProductRepository {
                     "полный No Frost, электронное управление, класс A+, полезный объём: 311 л (213 + 98 л),\n" +
                             "инверторный компрессор, 59.5x67.5x178 см, серебристый",
                     214,
-                    118)
+                    118),
+
+            new Kettle("Электрочайник Scarlett SC-EK27G73",
+                    42.20,
+                    2020,
+                    "2000 Вт, объем 1.7 л, подсветка, цвет нержавеющая сталь/черный",
+                    1.7,
+                    0.5,
+                    0.7),
+
+            new Kettle("Электрочайник KitchenAid Artisan 5KEK1522EIB",
+                    811.44,
+                    2014,
+                    "2400 Вт, объем 1.5 л, терморегулятор, цвет синий",
+                    1.5,
+                    0.25,
+                    2)
     );
 
     @Override
