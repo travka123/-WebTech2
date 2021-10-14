@@ -31,6 +31,10 @@ public class CoffeeMachine extends Product {
         this.remoteControl = remoteControl;
     }
 
+    public CoffeeMachine() {
+
+    }
+
     public CoffeeMachine(String name, double price, int marketLaunchYear, String description,
                          double waterTank, int coffeeCompartment, boolean remoteControl) {
         super(name, price, marketLaunchYear, description);

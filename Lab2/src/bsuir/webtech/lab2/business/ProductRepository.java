@@ -9,4 +9,6 @@ public abstract class ProductRepository {
     public abstract List<Product> getProducts();
 
     public abstract List<Product> getProducts(Predicate<Product> predicate);
+
+    public abstract void saveProducts(List<Product> products);
 }

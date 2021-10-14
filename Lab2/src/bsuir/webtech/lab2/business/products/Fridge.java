@@ -6,6 +6,10 @@ public class Fridge extends Product {
     private int refrigeratingChamberVolume;
     private int freezerVolume;
 
+    public Fridge() {
+
+    }
+
     public Fridge(String name, double price, int marketLaunchYear, String description,
                   int refrigeratingChamberVolume, int freezerVolume) {
         super(name, price, marketLaunchYear, description);

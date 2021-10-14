@@ -10,9 +10,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class TestProductDao extends ProductRepository {
+public class StubProductDao extends ProductRepository {
 
-    private final List<Product> products = Arrays.asList(
+    private List<Product> products = Arrays.asList(
             new Fridge("Холодильник side by side Samsung RS62R5031B4/WT",
                     2999.00,
                     2019,
@@ -53,5 +53,10 @@ public class TestProductDao extends ProductRepository {
             }
         }
         return selectedProducts;
+    }
+
+    @Override
+    public void saveProducts(List<Product> products) {
+        this.products = products;
     }
 }

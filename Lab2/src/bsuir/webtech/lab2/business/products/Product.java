@@ -3,7 +3,7 @@ package bsuir.webtech.lab2.business.products;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public abstract class Product {
+public abstract class Product implements java.io.Serializable {
     private String name;
 
     public String getName() {
@@ -42,6 +42,10 @@ public abstract class Product {
 
     public void setMarketLaunchYear(int marketLaunchYear) {
         this.marketLaunchYear = marketLaunchYear;
+    }
+
+    public Product() {
+
     }
 
     public Product(String name, double price, int marketLaunchYear, String description) {
