@@ -62,7 +62,7 @@ public class XMLAccountDao extends AccountService {
         accounts.add(new Account(
                 "redactor",
                 Cryptography.getPasswordHash("333"),
-                new AccessRights(AccessRights.UPDATE | AccessRights.CREATE)
+                new AccessRights(AccessRights.READ | AccessRights.UPDATE)
         ));
 
         accounts.add(new Account(
