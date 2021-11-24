@@ -1,6 +1,7 @@
 package bsuir.webtech.lab3.server.persistence;
 
 import bsuir.webtech.lab3.server.business.StudentService;
+import bsuir.webtech.lab3.shared.FullName;
 import bsuir.webtech.lab3.shared.Student;
 import bsuir.webtech.lab3.shared.StudentScantyInfo;
 
@@ -87,14 +88,49 @@ public class XMLStudentDao extends StudentService {
     }
 
     public void saveAll() {
-        try {
-            XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(filePath)));
-            for (Student student : students) {
-                encoder.writeObject(student);
-            }
-            encoder.close();
-        } catch (FileNotFoundException ignored) {
+        synchronized (students) {
+            try {
+                XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(filePath)));
+                for (Student student : students) {
+                    encoder.writeObject(student);
+                }
+                encoder.close();
+            } catch (FileNotFoundException ignored) {
 
+            }
         }
+    }
+
+    public void fillWithDefault() {
+        students.clear();
+        students.add(new Student(
+                0,
+                new FullName("Egor", "Goldberg", "Vladimirovich"),
+                "944332",
+                'М',
+                1999,
+                "+111111111",
+                "str1"
+        ));
+
+        students.add(new Student(
+                0,
+                new FullName("Eva", "Rubinshtein", "Olegovna"),
+                "941232",
+                'Ж',
+                2001,
+                "+121121111",
+                "str2"
+        ));
+
+        students.add(new Student(
+                0,
+                new FullName("Olga", "Frolova", "Glebovna"),
+                "91111",
+                'Ж',
+                1996,
+                "+123123113",
+                "str3"
+        ));
     }
 }
