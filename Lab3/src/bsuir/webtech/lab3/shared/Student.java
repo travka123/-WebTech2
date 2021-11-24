@@ -24,12 +24,12 @@ public class Student {
        group = studentScantyInfo.getGroup();
    }
 
-    public Student(int id, FullName fullName, String group, char gender, int age, String phoneNumber, String address) {
+    public Student(int id, FullName fullName, String group, char gender, int yearOfBirth, String phoneNumber, String address) {
         this.id = id;
         this.fullName = fullName;
         this.group = group;
         this.gender = gender;
-        this.yearOfBirth = age;
+        this.yearOfBirth = yearOfBirth;
         this.phoneNumber = phoneNumber;
         this.address = address;
     }
@@ -89,6 +89,12 @@ public class Student {
     public void setId(int id) {
         this.id = id;
     }
+
+    public boolean isValid() {
+        return fullName.isValid() && (group != null) && (gender != '\0') && (yearOfBirth != 0) &&
+                (phoneNumber != null) && (address != null);
+    }
+
 
     public StudentScantyInfo getScantyInfo() {
         return new StudentScantyInfo(id, fullName, group);

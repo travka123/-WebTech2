@@ -48,6 +48,10 @@ public class FullName {
         return String.format("%s %s %s", surname, name, patronymic);
     }
 
+    public boolean isValid() {
+        return (name != null) && (surname != null) && (patronymic != null);
+    }
+
     public static FullName deserialize(DataInputStream inputStream) throws IOException {
         String n = inputStream.readUTF();
         String s = inputStream.readUTF();

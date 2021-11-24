@@ -35,7 +35,7 @@ public class StudentFileUpdate {
         int selected = askUser(text);
         while (selected != 0) {
             switch (selected) {
-                case 1 -> studentService.updateStudent(student);
+                case 1 -> trySave();
                 case 2 -> student.getFullName().setName(userIO.getString());
                 case 3 -> student.getFullName().setSurname(userIO.getString());
                 case 4 -> student.getFullName().setPatronymic(userIO.getString());
@@ -54,5 +54,16 @@ public class StudentFileUpdate {
         userIO.print("\n");
         userIO.print(text);
         return userIO.getIntInBoundaries(0, 9);
+    }
+
+    private void trySave() throws IOException {
+        if (student.isValid()){
+            studentService.updateStudent(student);
+            userIO.print("\nСохранено\n\n");
+        }
+        else {
+            userIO.print("\nНе удалось сохранить: все поля должны быть заполнены\n\n");
+        }
+
     }
 }
