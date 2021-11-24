@@ -114,7 +114,7 @@ public class XMLStudentDao extends StudentService {
         ));
 
         students.add(new Student(
-                0,
+                1,
                 new FullName("Eva", "Rubinshtein", "Olegovna"),
                 "941232",
                 'Ж',
@@ -124,7 +124,7 @@ public class XMLStudentDao extends StudentService {
         ));
 
         students.add(new Student(
-                0,
+                2,
                 new FullName("Olga", "Frolova", "Glebovna"),
                 "91111",
                 'Ж',
