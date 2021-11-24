@@ -13,12 +13,17 @@ import java.util.List;
 
 public class CommunicationProtocol {
     private final StudentService studentService;
+    private final AuthorizationProtocol authorizationProtocol;
 
-    public CommunicationProtocol(StudentService studentService) {
+    public CommunicationProtocol(StudentService studentService, AuthorizationProtocol authorizationProtocol) {
         this.studentService = studentService;
+        this.authorizationProtocol = authorizationProtocol;
     }
 
-    public void Communicate(DataInputStream in, DataOutputStream out, AccessRights accessRights) throws IOException {
+    public void Communicate(DataInputStream in, DataOutputStream out) throws IOException {
+
+        AccessRights accessRights = authorizationProtocol.Communicate(in, out);
+
         int opcode = in.readInt();
         while (opcode != OperationsCodes.exit) {
             switch (opcode) {

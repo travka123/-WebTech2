@@ -8,16 +8,12 @@ import java.io.*;
 public class AuthorizationProtocol {
 
     private final AuthorizationService authorizationService;
-    private final CommunicationProtocol authorizedCommunication;
 
-    public AuthorizationProtocol(AuthorizationService authorizationService,
-                                 CommunicationProtocol authorizedCommunication) {
-
+    public AuthorizationProtocol(AuthorizationService authorizationService) {
         this.authorizationService = authorizationService;
-        this.authorizedCommunication = authorizedCommunication;
     }
 
-    public void Communicate(DataInputStream in, DataOutputStream out) throws IOException {
+    public AccessRights Communicate(DataInputStream in, DataOutputStream out) throws IOException {
 
         AccessRights accessRights = authorizationService.tryAuthorizeUser(in.readUTF(), in.readUTF());
 
@@ -28,6 +24,6 @@ public class AuthorizationProtocol {
 
         out.writeInt(accessRights.getCode());
 
-        authorizedCommunication.Communicate(in, out, accessRights);
+        return accessRights;
     }
 }

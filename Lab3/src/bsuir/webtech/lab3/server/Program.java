@@ -25,13 +25,7 @@ public class Program {
         //studentDao.fillWithDefault();
         //studentDao.saveAll();
 
-        Server server = new Server(
-                port,
-                new AuthorizationProtocol(
-                        new AuthorizationService(accountDao),
-                        new CommunicationProtocol(studentDao)
-                )
-        );
+        Server server = new Server(port, new CommunicationProtocol(studentDao, new AuthorizationProtocol(new AuthorizationService(accountDao))));
         server.start();
 
 

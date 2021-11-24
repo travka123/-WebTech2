@@ -1,6 +1,7 @@
 package bsuir.webtech.lab3.server.networking;
 
 import bsuir.webtech.lab3.server.protocols.AuthorizationProtocol;
+import bsuir.webtech.lab3.server.protocols.CommunicationProtocol;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -9,10 +10,10 @@ import java.net.Socket;
 
 public class Connection {
     private final Socket socket;
-    private final AuthorizationProtocol protocol;
+    private final CommunicationProtocol protocol;
     private Thread communicationThread;
 
-    public Connection(Socket socket, AuthorizationProtocol protocol) {
+    public Connection(Socket socket, CommunicationProtocol protocol) {
         this.socket = socket;
         this.protocol = protocol;
     }

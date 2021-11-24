@@ -2,6 +2,7 @@ package bsuir.webtech.lab3.server.networking;
 
 
 import bsuir.webtech.lab3.server.protocols.AuthorizationProtocol;
+import bsuir.webtech.lab3.server.protocols.CommunicationProtocol;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -11,14 +12,14 @@ import java.util.List;
 
 public class Server {
     private final int port;
-    private final AuthorizationProtocol protocol;
+    private final CommunicationProtocol protocol;
 
     private boolean running = false;
     private ServerSocket serverSocket;
     private Thread receivingThread;
     private final List<Connection> connections = new ArrayList<>();
 
-    public Server(int port, AuthorizationProtocol protocol) {
+    public Server(int port, CommunicationProtocol protocol) {
         this.port = port;
         this.protocol = protocol;
     }
