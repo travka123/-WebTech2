@@ -1,7 +1,7 @@
 package bsuir.webtech.lab3.server.networking;
 
 
-import bsuir.webtech.lab3.server.protocols.UnauthorizedCommunication;
+import bsuir.webtech.lab3.server.protocols.AuthorizationProtocol;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -11,14 +11,14 @@ import java.util.List;
 
 public class Server {
     private final int port;
-    private final UnauthorizedCommunication protocol;
+    private final AuthorizationProtocol protocol;
 
     private boolean running = false;
     private ServerSocket serverSocket;
     private Thread receivingThread;
     private final List<Connection> connections = new ArrayList<>();
 
-    public Server(int port, UnauthorizedCommunication protocol) {
+    public Server(int port, AuthorizationProtocol protocol) {
         this.port = port;
         this.protocol = protocol;
     }

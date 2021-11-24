@@ -4,8 +4,8 @@ import bsuir.webtech.lab3.server.business.AuthorizationService;
 import bsuir.webtech.lab3.server.networking.Server;
 import bsuir.webtech.lab3.server.persistence.XMLAccountDao;
 import bsuir.webtech.lab3.server.persistence.XMLStudentDao;
-import bsuir.webtech.lab3.server.protocols.AuthorizedCommunication;
-import bsuir.webtech.lab3.server.protocols.UnauthorizedCommunication;
+import bsuir.webtech.lab3.server.protocols.CommunicationProtocol;
+import bsuir.webtech.lab3.server.protocols.AuthorizationProtocol;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -27,9 +27,9 @@ public class Program {
 
         Server server = new Server(
                 port,
-                new UnauthorizedCommunication(
+                new AuthorizationProtocol(
                         new AuthorizationService(accountDao),
-                        new AuthorizedCommunication(studentDao)
+                        new CommunicationProtocol(studentDao)
                 )
         );
         server.start();

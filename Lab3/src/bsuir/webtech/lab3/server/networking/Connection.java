@@ -1,6 +1,6 @@
 package bsuir.webtech.lab3.server.networking;
 
-import bsuir.webtech.lab3.server.protocols.UnauthorizedCommunication;
+import bsuir.webtech.lab3.server.protocols.AuthorizationProtocol;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -9,12 +9,12 @@ import java.net.Socket;
 
 public class Connection {
     private final Socket socket;
-    private final UnauthorizedCommunication protocol;
+    private final AuthorizationProtocol protocol;
     private Thread communicationThread;
 
-    public Connection(Socket socket, UnauthorizedCommunication unauthorizedCommunication) {
+    public Connection(Socket socket, AuthorizationProtocol protocol) {
         this.socket = socket;
-        this.protocol = unauthorizedCommunication;
+        this.protocol = protocol;
     }
 
     public void start() {

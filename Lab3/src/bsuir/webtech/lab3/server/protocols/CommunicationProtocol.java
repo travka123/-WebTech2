@@ -11,10 +11,10 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-public class AuthorizedCommunication {
+public class CommunicationProtocol {
     private final StudentService studentService;
 
-    public AuthorizedCommunication(StudentService studentService) {
+    public CommunicationProtocol(StudentService studentService) {
         this.studentService = studentService;
     }
 

@@ -5,13 +5,13 @@ import bsuir.webtech.lab3.shared.AccessRights;
 
 import java.io.*;
 
-public class UnauthorizedCommunication {
+public class AuthorizationProtocol {
 
     private final AuthorizationService authorizationService;
-    private final AuthorizedCommunication authorizedCommunication;
+    private final CommunicationProtocol authorizedCommunication;
 
-    public UnauthorizedCommunication(AuthorizationService authorizationService,
-                                     AuthorizedCommunication authorizedCommunication) {
+    public AuthorizationProtocol(AuthorizationService authorizationService,
+                                 CommunicationProtocol authorizedCommunication) {
 
         this.authorizationService = authorizationService;
         this.authorizedCommunication = authorizedCommunication;
