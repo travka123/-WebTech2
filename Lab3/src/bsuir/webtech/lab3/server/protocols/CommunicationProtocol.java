@@ -23,7 +23,7 @@ public class CommunicationProtocol {
         while (opcode != OperationsCodes.exit) {
             switch (opcode) {
                 case OperationsCodes.getStudentById -> execGetStudentById(in, out, accessRights);
-                case OperationsCodes.getStudentsScantyInfo -> execGetStudentsScantyInfo(in, out);
+                case OperationsCodes.getStudentsScantyInfo -> execGetStudentsScantyInfo(in, out, accessRights);
                 case OperationsCodes.updateStudent -> execUpdateStudent(in, out, accessRights);
                 case OperationsCodes.createStudent -> execCreateStudent(in, out, accessRights);
                 default -> throw new IOException();
@@ -69,7 +69,13 @@ public class CommunicationProtocol {
         student.serialize(out);
     }
 
-    private void execGetStudentsScantyInfo(DataInputStream in, DataOutputStream out) throws IOException {
+    private void execGetStudentsScantyInfo(DataInputStream in, DataOutputStream out,
+                                           AccessRights accessRights) throws IOException {
+
+        if (!(accessRights.canRead() || accessRights.canUpdate())) {
+            throw new IOException();
+        }
+
         List<StudentScantyInfo> studentsScantyInfo = studentService.getStudentsScantyInfo();
 
         out.writeInt(studentsScantyInfo.size());
