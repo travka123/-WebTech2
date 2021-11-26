@@ -1,12 +1,11 @@
-package bsuir.webtech.lab4.persistence.html.content.stubs;
+package bsuir.webtech.lab4.persistence.html.content;
 
 import bsuir.webtech.lab4.persistence.html.Content;
 
 import java.util.Collections;
 import java.util.List;
 
-public class StubHeader extends Content {
-
+public class NotFound extends Content {
     @Override
     public List<String> getStyles() {
         return Collections.emptyList();
@@ -14,6 +13,6 @@ public class StubHeader extends Content {
 
     @Override
     public String get() {
-        return "Гостиница #1";
+        return "<h2 style=\"color:red;\">404 Страница не найдена</h2>";
     }
 }

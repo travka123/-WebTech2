@@ -1,7 +1,7 @@
-package bsuir.webtech.lab4.controllers;
+package bsuir.webtech.lab4.servlets;
 
-import bsuir.webtech.lab4.persistence.html.content.stubs.StubContent;
-import bsuir.webtech.lab4.persistence.html.content.stubs.StubHeader;
+import bsuir.webtech.lab4.persistence.html.content.Header;
+import bsuir.webtech.lab4.persistence.html.content.Welcome;
 import bsuir.webtech.lab4.persistence.views.View;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,12 +12,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("")
-public class IndexController extends HttpServlet {
+public class IndexServlet extends HttpServlet {
 
     private final View view = new View();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().write(view.get(new StubHeader(), new StubContent()));
+        resp.getWriter().write(view.get(new Header(), new Welcome()));
     }
 }
