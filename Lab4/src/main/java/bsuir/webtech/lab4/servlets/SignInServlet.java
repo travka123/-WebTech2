@@ -31,13 +31,18 @@ public class SignInServlet extends HttpServlet {
             content = new SignIn(true, servicesAccessPoint.getAuthorizationService().createSalt());
         }
 
-        resp.getWriter().write(view.get(new Header(), content));
+        if (new ServletSession(req.getSession()).isAuthorized()) {
+            resp.sendRedirect("/");
+        }
+        else {
+            resp.getWriter().write(view.get(new Header(false), content));
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (servicesAccessPoint.getAuthorizationService().tryAuthorize(
-                null,
+                new ServletSession(req.getSession()),
                 req.getParameter("email"),
                 req.getParameter("password"),
                 req.getParameter("salt"))) {

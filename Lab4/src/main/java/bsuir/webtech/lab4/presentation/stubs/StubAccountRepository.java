@@ -23,7 +23,7 @@ public class StubAccountRepository extends AccountsRepository {
                     "admin",
                     "admin",
                     Cryptography.getHash("admin"),
-                    UserRole.Guest
+                    UserRole.ADMIN
             );
         } catch (NoSuchAlgorithmException e) {
             return null;

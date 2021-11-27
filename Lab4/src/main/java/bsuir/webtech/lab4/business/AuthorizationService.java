@@ -4,20 +4,20 @@ import java.security.NoSuchAlgorithmException;
 
 public class AuthorizationService {
     private final AccountsRepository accountsRepository;
-    private final SaltsRepository saltsRepository;
+    private final SaltShaker saltShaker;
 
-    public AuthorizationService(AccountsRepository accountsRepository, SaltsRepository saltsRepository) {
+    public AuthorizationService(AccountsRepository accountsRepository, SaltShaker saltShaker) {
         this.accountsRepository = accountsRepository;
-        this.saltsRepository = saltsRepository;
+        this.saltShaker = saltShaker;
     }
 
     public String createSalt() {
-        return saltsRepository.createSalt();
+        return saltShaker.createSalt();
     }
 
     public boolean tryAuthorize(UserSession userSession, String email, String passwordSaltHash, String salt) {
 
-        if (!saltsRepository.tryUse(salt)) {
+        if (!saltShaker.tryUse(salt)) {
             return false;
         }
 
@@ -34,7 +34,7 @@ public class AuthorizationService {
             return false;
         }
 
-        //userSession.setUserId(account.getId());
+        userSession.setUserId(account.getId());
         return true;
     }
 }

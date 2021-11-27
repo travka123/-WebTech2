@@ -18,7 +18,7 @@ public class NotFoundServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().write(view.get(new Header(), new NotFound()));
+        resp.getWriter().write(view.get(new Header(new ServletSession(req.getSession()).isAuthorized()), new NotFound()));
     }
 
     @Override

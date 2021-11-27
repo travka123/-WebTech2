@@ -3,12 +3,12 @@ package bsuir.webtech.lab4.business;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SaltsRepository {
+public class SaltShaker {
     private final long saltExpireTimeMs;
 
     private final List<Salt> salts = new ArrayList<>();
 
-    public SaltsRepository(long saltExpireTimeMs) {
+    public SaltShaker(long saltExpireTimeMs) {
         this.saltExpireTimeMs = saltExpireTimeMs;
     }
 
