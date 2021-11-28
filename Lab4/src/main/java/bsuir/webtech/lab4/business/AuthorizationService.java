@@ -35,6 +35,8 @@ public class AuthorizationService {
         }
 
         userSession.setUserId(account.getId());
+        userSession.setUserRole(account.getRole());
+        userSession.setUserName(account.getName());
         return true;
     }
 }

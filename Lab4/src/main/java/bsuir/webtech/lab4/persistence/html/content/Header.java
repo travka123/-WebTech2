@@ -26,7 +26,7 @@ public class Header extends Content {
         content.append("<div>");
         content.append("<div>");
         content.append(HtmlUtils.createLink("/", "Гостиница #1"));
-        content.append(HtmlUtils.createLink("/catalog", "ПРЕДЛОЖЕНИЯ"));
+        content.append(HtmlUtils.createLink("/suggestions", "ПРЕДЛОЖЕНИЯ"));
         content.append("<div>");
         if (authorized) {
             content.append(HtmlUtils.createLink("/account", "Аккаунт"));

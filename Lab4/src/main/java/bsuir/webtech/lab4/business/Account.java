@@ -43,6 +43,14 @@ public class Account {
 
     }
 
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
+
     public Account(int id, String name, String email, String passHash, UserRole role) {
         this.id = id;
         this.name = name;

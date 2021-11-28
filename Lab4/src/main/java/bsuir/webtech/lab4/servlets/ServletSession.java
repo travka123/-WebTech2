@@ -1,5 +1,6 @@
 package bsuir.webtech.lab4.servlets;
 
+import bsuir.webtech.lab4.business.UserRole;
 import bsuir.webtech.lab4.business.UserSession;
 import jakarta.servlet.http.HttpSession;
 
@@ -20,6 +21,31 @@ public class ServletSession extends UserSession {
     public void setUserId(int userId) {
         session.setAttribute("id", userId);
         session.setMaxInactiveInterval(-1);
+    }
+
+    @Override
+    public UserRole getUserRole() {
+        Object value = session.getAttribute("role");
+        if (value == null) {
+            return UserRole.NONE;
+        } else {
+            return (UserRole) value;
+        }
+    }
+
+    @Override
+    public void setUserRole(UserRole userRole) {
+        session.setAttribute("role", userRole);
+    }
+
+    @Override
+    public String getUserName() {
+        return (String) session.getAttribute("name");
+    }
+
+    @Override
+    public void setUserName(String name) {
+        session.setAttribute("name", name);
     }
 
     @Override
