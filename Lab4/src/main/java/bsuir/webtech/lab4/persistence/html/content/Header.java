@@ -3,6 +3,7 @@ package bsuir.webtech.lab4.persistence.html.content;
 import bsuir.webtech.lab4.persistence.html.Content;
 import bsuir.webtech.lab4.persistence.html.HtmlUtils;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,7 +17,9 @@ public class Header extends Content {
 
     @Override
     public List<String> getStyles() {
-        return Collections.emptyList();
+        List<String> styles = new ArrayList<>();
+        styles.add("css/header.css");
+        return styles;
     }
 
     @Override
@@ -24,10 +27,15 @@ public class Header extends Content {
         StringBuilder content = new StringBuilder();
 
         content.append("<div>");
-        content.append("<div>");
-        content.append(HtmlUtils.createLink("/", "Гостиница #1"));
-        content.append(HtmlUtils.createLink("/suggestions", "ПРЕДЛОЖЕНИЯ"));
-        content.append("<div>");
+        content.append("<div class=\"title\">");
+        content.append(HtmlUtils.createLink("/", "<h1>Гостиница #1</h1></a>"));
+        content.append("</div>");
+
+        content.append("<div class=\"menu\">");
+        content.append(HtmlUtils.createLink("/suggestions", "Предложения"));
+        content.append("</div>");
+
+        content.append("<div class=\"options\">");
         if (authorized) {
             content.append(HtmlUtils.createLink("/account", "Аккаунт"));
             content.append(" | ");
@@ -40,7 +48,7 @@ public class Header extends Content {
         content.append(" | ");
         content.append(HtmlUtils.createLink("/", "Сменить язык"));
         content.append("</div>");
-        content.append("</div>");
+
         content.append("</div>");
 
         return content.toString();

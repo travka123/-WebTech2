@@ -21,6 +21,7 @@ public class Body1 extends Content {
 
         styles.addAll(header.getStyles());
         styles.addAll(main.getStyles());
+        styles.add("css/shared.css");
 
         return styles;
     }
