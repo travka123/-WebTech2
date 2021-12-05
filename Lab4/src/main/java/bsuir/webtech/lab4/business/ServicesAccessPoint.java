@@ -1,8 +1,8 @@
 package bsuir.webtech.lab4.business;
 
-import bsuir.webtech.lab4.presentation.stubs.StubAccountRepository;
-import bsuir.webtech.lab4.presentation.stubs.StubReservationDAO;
-import bsuir.webtech.lab4.presentation.stubs.StubRoomDAO;
+import bsuir.webtech.lab4.persistence.stubs.StubAccountRepository;
+import bsuir.webtech.lab4.persistence.stubs.StubReservationDAO;
+import bsuir.webtech.lab4.persistence.stubs.StubRoomDAO;
 
 public class ServicesAccessPoint {
     private static final AuthorizationService authorizationService = new AuthorizationService(

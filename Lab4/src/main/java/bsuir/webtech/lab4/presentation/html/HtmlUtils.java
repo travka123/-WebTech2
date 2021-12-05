@@ -1,4 +1,4 @@
-package bsuir.webtech.lab4.persistence.html;
+package bsuir.webtech.lab4.presentation.html;
 
 public class HtmlUtils {
     public static String createLink(String href, String text) {

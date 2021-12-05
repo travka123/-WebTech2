@@ -1,4 +1,4 @@
-package bsuir.webtech.lab4.persistence.html;
+package bsuir.webtech.lab4.presentation.html;
 
 public class Head {
     public String get(String encoding, Iterable<String> styles) {

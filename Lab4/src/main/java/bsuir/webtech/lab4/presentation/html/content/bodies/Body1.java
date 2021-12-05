@@ -1,6 +1,8 @@
-package bsuir.webtech.lab4.persistence.html.content.bodies;
+package bsuir.webtech.lab4.presentation.html.content.bodies;
 
-import bsuir.webtech.lab4.persistence.html.Content;
+
+
+import bsuir.webtech.lab4.presentation.html.Content;
 
 import java.util.ArrayList;
 import java.util.List;

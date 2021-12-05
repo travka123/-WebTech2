@@ -1,8 +1,8 @@
 package bsuir.webtech.lab4.servlets;
 
-import bsuir.webtech.lab4.persistence.html.content.Header;
-import bsuir.webtech.lab4.persistence.html.content.NotFound;
-import bsuir.webtech.lab4.persistence.views.View;
+import bsuir.webtech.lab4.presentation.html.View;
+import bsuir.webtech.lab4.presentation.html.content.Header;
+import bsuir.webtech.lab4.presentation.html.content.NotFound;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

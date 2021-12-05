@@ -1,4 +1,4 @@
-package bsuir.webtech.lab4.persistence.html.content;
+package bsuir.webtech.lab4.presentation.html.content;
 
 import bsuir.webtech.lab4.business.Room;
 import bsuir.webtech.lab4.business.RoomsService;

@@ -1,9 +1,5 @@
-package bsuir.webtech.lab4.persistence.views;
-
-import bsuir.webtech.lab4.persistence.html.Content;
-import bsuir.webtech.lab4.persistence.html.Head;
-import bsuir.webtech.lab4.persistence.html.HtmlDocument;
-import bsuir.webtech.lab4.persistence.html.content.bodies.Body1;
+package bsuir.webtech.lab4.presentation.html;
+import bsuir.webtech.lab4.presentation.html.content.bodies.Body1;
 
 public class View {
 

@@ -1,4 +1,4 @@
-package bsuir.webtech.lab4.presentation.stubs;
+package bsuir.webtech.lab4.persistence.stubs;
 
 import bsuir.webtech.lab4.business.Account;
 import bsuir.webtech.lab4.business.AccountsRepository;

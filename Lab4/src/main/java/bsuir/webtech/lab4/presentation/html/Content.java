@@ -1,4 +1,4 @@
-package bsuir.webtech.lab4.persistence.html;
+package bsuir.webtech.lab4.presentation.html;
 
 import java.util.List;
 

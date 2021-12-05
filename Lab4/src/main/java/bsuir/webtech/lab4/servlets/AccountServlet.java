@@ -1,12 +1,13 @@
 package bsuir.webtech.lab4.servlets;
 
+
 import bsuir.webtech.lab4.business.ServicesAccessPoint;
 import bsuir.webtech.lab4.business.UserRole;
-import bsuir.webtech.lab4.persistence.html.Content;
-import bsuir.webtech.lab4.persistence.html.content.Account;
-import bsuir.webtech.lab4.persistence.html.content.AccountAdmin;
-import bsuir.webtech.lab4.persistence.html.content.Header;
-import bsuir.webtech.lab4.persistence.views.View;
+import bsuir.webtech.lab4.presentation.html.Content;
+import bsuir.webtech.lab4.presentation.html.View;
+import bsuir.webtech.lab4.presentation.html.content.Account;
+import bsuir.webtech.lab4.presentation.html.content.AccountAdmin;
+import bsuir.webtech.lab4.presentation.html.content.Header;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
