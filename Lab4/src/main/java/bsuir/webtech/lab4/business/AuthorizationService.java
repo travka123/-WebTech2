@@ -1,13 +1,15 @@
 package bsuir.webtech.lab4.business;
 
+import bsuir.webtech.lab4.business.Beans.User;
+
 import java.security.NoSuchAlgorithmException;
 
 public class AuthorizationService {
-    private final AccountsRepository accountsRepository;
+    private final UsersRepository usersRepository;
     private final SaltShaker saltShaker;
 
-    public AuthorizationService(AccountsRepository accountsRepository, SaltShaker saltShaker) {
-        this.accountsRepository = accountsRepository;
+    public AuthorizationService(UsersRepository usersRepository, SaltShaker saltShaker) {
+        this.usersRepository = usersRepository;
         this.saltShaker = saltShaker;
     }
 
@@ -15,28 +17,28 @@ public class AuthorizationService {
         return saltShaker.createSalt();
     }
 
-    public boolean tryAuthorize(UserSession userSession, String email, String passwordSaltHash, String salt) {
+    public boolean tryAuthorize(UserSession userSession, String login, String passwordSaltHash, String salt) {
 
         if (!saltShaker.tryUse(salt)) {
             return false;
         }
 
-        Account account = accountsRepository.getAccountBy(email);
-        if (account == null) {
+        User user = usersRepository.getAccountByLogin(login);
+        if (user == null) {
             return false;
         }
 
         try {
-            if (!passwordSaltHash.equals(Cryptography.getHash(account.getPassHash() + salt))) {
+            if (!passwordSaltHash.equals(Cryptography.getHash(user.getPassHash() + salt))) {
                 return false;
             }
         } catch (NoSuchAlgorithmException e) {
             return false;
         }
 
-        userSession.setUserId(account.getId());
-        userSession.setUserRole(account.getRole());
-        userSession.setUserName(account.getName());
+        userSession.setUserId(user.getId());
+        userSession.setUserRole(user.getRole());
+        userSession.setUserName(user.getName());
         return true;
     }
 }

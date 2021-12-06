@@ -1,7 +1,7 @@
 
 document.getElementById('form-btn').addEventListener("click", async (e) => {
     e.preventDefault();
-    location.replace((await fetch('/signin', {
+    location.replace((await fetch('/action?type=signin', {
         method: 'POST',
         headers: {'Content-Type':'application/x-www-form-urlencoded'},
         body: 'email=' + document.getElementById('form-email').value +

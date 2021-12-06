@@ -1,11 +1,20 @@
-package bsuir.webtech.lab4.business;
+package bsuir.webtech.lab4.business.Beans;
 
-public class Account {
+import java.io.Serializable;
+
+public class User implements Serializable {
+
     private int id;
     private String name;
     private String email;
     private String passHash;
-    private UserRole role;
+    private String role;
+
+    public class UserRole {
+        public static final String guest = "guest";
+        public static final String user = "user";
+        public static final String admin = "admin";
+    }
 
     public int getId() {
         return id;
@@ -39,19 +48,19 @@ public class Account {
         this.passHash = passHash;
     }
 
-    public Account() {
-
-    }
-
-    public UserRole getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(UserRole role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
-    public Account(int id, String name, String email, String passHash, UserRole role) {
+    public User() {
+
+    }
+
+    public User(int id, String name, String email, String passHash, String role) {
         this.id = id;
         this.name = name;
         this.email = email;

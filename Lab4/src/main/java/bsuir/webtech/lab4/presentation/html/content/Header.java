@@ -1,18 +1,14 @@
 package bsuir.webtech.lab4.presentation.html.content;
 
+import bsuir.webtech.lab4.business.UserSession;
 import bsuir.webtech.lab4.presentation.html.Content;
 import bsuir.webtech.lab4.presentation.html.HtmlUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class Header extends Content {
-
-    private final boolean authorized;
-
-    public Header(boolean authorized) {
-        this.authorized = authorized;
-    }
 
     @Override
     public List<String> getStyles() {
@@ -22,7 +18,7 @@ public class Header extends Content {
     }
 
     @Override
-    public String get() {
+    public String get(UserSession session, ResourceBundle bundle) {
         StringBuilder content = new StringBuilder();
 
         content.append("<div>");
@@ -35,10 +31,10 @@ public class Header extends Content {
         content.append("</div>");
 
         content.append("<div class=\"options\">");
-        if (authorized) {
+        if (session.isAuthorized()) {
             content.append(HtmlUtils.createLink("/account", "Аккаунт"));
             content.append(" | ");
-            content.append(HtmlUtils.createLink("/exit", "Выход"));
+            content.append(HtmlUtils.createLink("/action?type=exit", "Выход"));
         } else {
             content.append(HtmlUtils.createLink("/signin", "Вход"));
             content.append(" | ");

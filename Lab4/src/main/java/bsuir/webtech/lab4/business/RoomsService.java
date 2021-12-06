@@ -1,5 +1,7 @@
 package bsuir.webtech.lab4.business;
 
+import bsuir.webtech.lab4.business.Beans.Room;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,15 +18,7 @@ public class RoomsService {
     }
 
     public List<Room> getVisibleRooms() {
-        List<Room> visibleRooms = new ArrayList<>();
-
-        for (Room room : roomsRepository.getRooms()) {
-            if (!room.isHidden()) {
-                visibleRooms.add(room);
-            }
-        }
-
-        return visibleRooms;
+        return roomsRepository.getVisibleRooms();
     }
 
     public Room getRoomById(int roomId) {

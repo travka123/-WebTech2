@@ -1,21 +1,20 @@
 package bsuir.webtech.lab4.presentation.html.content;
 
-import bsuir.webtech.lab4.business.Reservation;
-import bsuir.webtech.lab4.business.Room;
+import bsuir.webtech.lab4.business.Beans.Reservation;
+import bsuir.webtech.lab4.business.Beans.Room;
 import bsuir.webtech.lab4.business.ServicesAccessPoint;
 import bsuir.webtech.lab4.business.UserSession;
 import bsuir.webtech.lab4.presentation.html.Content;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class Account extends Content {
 
-    private final UserSession session;
     private final ServicesAccessPoint servicesAccessPoint;
 
-    public Account(UserSession session, ServicesAccessPoint servicesAccessPoint) {
-        this.session = session;
+    public Account(ServicesAccessPoint servicesAccessPoint) {
         this.servicesAccessPoint = servicesAccessPoint;
     }
 
@@ -25,7 +24,7 @@ public class Account extends Content {
     }
 
     @Override
-    public String get() {
+    public String get(UserSession session, ResourceBundle bundle) {
         StringBuilder content = new StringBuilder();
 
         content.append("<div>");
@@ -36,8 +35,8 @@ public class Account extends Content {
         content.append("<div>");
         for (Reservation reservation : servicesAccessPoint.getBookingService().getReservationsOf(session.getUserId())) {
             appendReservationCard(
-                    content, 
-                    reservation, 
+                    content,
+                    reservation,
                     servicesAccessPoint.getRoomsService().getRoomById(reservation.getRoomId())
             );
         }

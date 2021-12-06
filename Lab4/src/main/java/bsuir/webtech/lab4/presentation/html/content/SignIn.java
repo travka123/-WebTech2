@@ -1,9 +1,11 @@
 package bsuir.webtech.lab4.presentation.html.content;
 
+import bsuir.webtech.lab4.business.UserSession;
 import bsuir.webtech.lab4.presentation.html.Content;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class SignIn extends Content {
     private final boolean error;
@@ -20,7 +22,7 @@ public class SignIn extends Content {
     }
 
     @Override
-    public String get() {
+    public String get(UserSession session, ResourceBundle bundle) {
         StringBuilder content = new StringBuilder("<form action=\"signin\" method=\"post\">" +
                 "<h2>ВОЙТИ</h2>" +
                 "<span>Электронная почта:</span>" +
@@ -29,7 +31,7 @@ public class SignIn extends Content {
                 "<input id=\"form-password\"name=\"password\" type=\"password\" placeholder=\"password\">" +
                 "<input id=\"form-salt\" name=\"salt\" type=\"hidden\" value=\"" + salt + "\">" +
                 "<button id=\"form-btn\" type=\"submit\">Войти</button>"
-                );
+        );
 
         if (error) {
             content.append("<span>Неврное имя пользователя или пароль</span>");

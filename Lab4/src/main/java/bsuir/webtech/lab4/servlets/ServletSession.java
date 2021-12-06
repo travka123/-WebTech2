@@ -1,15 +1,21 @@
 package bsuir.webtech.lab4.servlets;
 
-import bsuir.webtech.lab4.business.UserRole;
+import bsuir.webtech.lab4.business.Beans.User;
 import bsuir.webtech.lab4.business.UserSession;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+
+import java.util.Locale;
 
 public class ServletSession extends UserSession {
 
     private final HttpSession session;
+    private final Locale locale;
+    private String lang = null;
 
-    public ServletSession(HttpSession session) {
-        this.session = session;
+    public ServletSession(HttpServletRequest req) {
+        this.session = req.getSession();
+        locale = req.getLocale();
     }
 
     @Override
@@ -24,17 +30,17 @@ public class ServletSession extends UserSession {
     }
 
     @Override
-    public UserRole getUserRole() {
+    public String getUserRole() {
         Object value = session.getAttribute("role");
         if (value == null) {
-            return UserRole.NONE;
+            return User.UserRole.guest;
         } else {
-            return (UserRole) value;
+            return (String) value;
         }
     }
 
     @Override
-    public void setUserRole(UserRole userRole) {
+    public void setUserRole(String userRole) {
         session.setAttribute("role", userRole);
     }
 
@@ -46,6 +52,21 @@ public class ServletSession extends UserSession {
     @Override
     public void setUserName(String name) {
         session.setAttribute("name", name);
+    }
+
+    @Override
+    public Locale getUserLocale() {
+
+        if (lang != null) {
+            return new Locale(lang);
+        }
+
+        return locale;
+    }
+
+    @Override
+    public void setUserLocale(Locale locale) {
+        this.lang = lang;
     }
 
     @Override

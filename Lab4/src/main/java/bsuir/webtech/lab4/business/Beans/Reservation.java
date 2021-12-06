@@ -1,12 +1,23 @@
-package bsuir.webtech.lab4.business;
+package bsuir.webtech.lab4.business.Beans;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Reservation {
+public class Reservation implements Serializable {
+
+    private int id;
     private int userId;
     private int roomId;
     private Date start;
     private Date end;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getUserId() {
         return userId;
@@ -44,6 +55,14 @@ public class Reservation {
     }
 
     public Reservation(int userId, int roomId, Date start, Date end) {
+        this.userId = userId;
+        this.roomId = roomId;
+        this.start = start;
+        this.end = end;
+    }
+
+    public Reservation(int id, int userId, int roomId, Date start, Date end) {
+        this.id = id;
         this.userId = userId;
         this.roomId = roomId;
         this.start = start;

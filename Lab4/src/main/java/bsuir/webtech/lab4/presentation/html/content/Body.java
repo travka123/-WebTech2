@@ -1,18 +1,18 @@
-package bsuir.webtech.lab4.presentation.html.content.bodies;
+package bsuir.webtech.lab4.presentation.html.content;
 
-
-
+import bsuir.webtech.lab4.business.UserSession;
 import bsuir.webtech.lab4.presentation.html.Content;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class Body1 extends Content {
+public class Body extends Content {
 
     private final Content header;
     private final Content main;
 
-    public Body1(Content header , Content main) {
+    public Body(Content header , Content main) {
         this.header = header;
         this.main = main;
     }
@@ -29,11 +29,10 @@ public class Body1 extends Content {
     }
 
     @Override
-    public String get() {
-
+    public String get(UserSession session, ResourceBundle bundle) {
         return "<body>" +
-                "<header>" + header.get() + "</header>" +
-                "<main>" + main.get() + "</main>" +
+                "<header>" + header.get(session, bundle) + "</header>" +
+                "<main>" + main.get(session, bundle) + "</main>" +
                 "</body>";
     }
 }

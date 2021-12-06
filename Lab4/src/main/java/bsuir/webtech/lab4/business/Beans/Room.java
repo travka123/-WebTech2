@@ -1,6 +1,9 @@
-package bsuir.webtech.lab4.business;
+package bsuir.webtech.lab4.business.Beans;
 
-public class Room {
+import java.io.Serializable;
+
+public class Room implements Serializable {
+
     private int id;
     private boolean hidden;
     private String name;
@@ -63,6 +66,9 @@ public class Room {
 
     public void setBedsCount(int bedsCount) {
         this.bedsCount = bedsCount;
+    }
+
+    public Room() {
     }
 
     public Room(int id, boolean hidden, String name, String description, String picture, int price, int bedsCount) {

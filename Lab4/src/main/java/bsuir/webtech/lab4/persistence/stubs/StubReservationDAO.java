@@ -1,6 +1,6 @@
 package bsuir.webtech.lab4.persistence.stubs;
 
-import bsuir.webtech.lab4.business.Reservation;
+import bsuir.webtech.lab4.business.Beans.Reservation;
 import bsuir.webtech.lab4.business.ReservationRepository;
 
 import java.util.ArrayList;
@@ -11,9 +11,8 @@ public class StubReservationDAO extends ReservationRepository {
     List<Reservation> reservations = new ArrayList<>();
 
     @Override
-    public boolean tryReserv(Reservation reservation) {
+    public void add(Reservation reservation) {
         reservations.add(reservation);
-        return true;
     }
 
     @Override

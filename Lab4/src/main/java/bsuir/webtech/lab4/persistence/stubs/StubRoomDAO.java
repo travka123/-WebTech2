@@ -1,6 +1,6 @@
 package bsuir.webtech.lab4.persistence.stubs;
 
-import bsuir.webtech.lab4.business.Room;
+import bsuir.webtech.lab4.business.Beans.Room;
 import bsuir.webtech.lab4.business.RoomsRepository;
 
 import java.util.ArrayList;
@@ -28,6 +28,11 @@ public class StubRoomDAO extends RoomsRepository {
     }
 
     @Override
+    public List<Room> getVisibleRooms() {
+        return new ArrayList<>(rooms);
+    }
+
+    @Override
     public Room getRoomById(int roomId) {
         for (Room room : rooms) {
             if (room.getId() == roomId) {
@@ -35,5 +40,10 @@ public class StubRoomDAO extends RoomsRepository {
             }
         }
         return null;
+    }
+
+    @Override
+    public void save(Room room) {
+
     }
 }

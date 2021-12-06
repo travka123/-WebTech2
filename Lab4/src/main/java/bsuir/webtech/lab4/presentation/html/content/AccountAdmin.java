@@ -5,22 +5,16 @@ import bsuir.webtech.lab4.presentation.html.Content;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class AccountAdmin extends Content {
-
-    private final UserSession session;
-
-    public AccountAdmin(UserSession session) {
-        this.session = session;
-    }
-
     @Override
     public List<String> getStyles() {
         return Collections.emptyList();
     }
 
     @Override
-    public String get() {
+    public String get(UserSession session, ResourceBundle bundle) {
         StringBuilder content = new StringBuilder();
         content.append("<div>");
         content.append("<h2>Здравствуйте, " + session.getUserName() + "</h2>");

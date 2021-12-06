@@ -1,9 +1,19 @@
 package bsuir.webtech.lab4.business;
 
+import bsuir.webtech.lab4.business.Beans.Reservation;
+import bsuir.webtech.lab4.business.Beans.User;
+
 import java.sql.Date;
 import java.util.List;
 
 public class BookingService {
+
+    public enum BookingError {
+        OK,
+        NOT_AUTHORIZED,
+        INCORRECT_PARAMETERS,
+        INCORRECT_DATE_PARAMETERS,
+    }
 
     private final RoomsService roomsService;
     private final ReservationRepository reservationRepository;
@@ -14,13 +24,13 @@ public class BookingService {
     }
 
     public BookingError canBook(UserSession session, int roomId) {
-        UserRole role = session.getUserRole();
+        String role = session.getUserRole();
 
-        if (role == UserRole.NONE) {
+        if (role.equals(User.UserRole.guest)) {
             return BookingError.NOT_AUTHORIZED;
         }
 
-        if (role != UserRole.USER) {
+        if (!role.equals(User.UserRole.user)) {
             return BookingError.INCORRECT_PARAMETERS;
         }
 
@@ -41,11 +51,9 @@ public class BookingService {
             return BookingError.INCORRECT_DATE_PARAMETERS;
         }
 
-        if (reservationRepository.tryReserv(new Reservation(session.getUserId(), roomId, start, end))) {
-            return BookingError.OK;
-        } else {
-            return BookingError.ALREADY_BOOKED;
-        }
+        reservationRepository.add(new Reservation(session.getUserId(), roomId, start, end));
+
+        return error;
     }
 
     public List<Reservation> getReservationsOf(int userId) {
