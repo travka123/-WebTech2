@@ -55,6 +55,10 @@ public class ActionsDispatcherServlet extends HttpServlet {
             case "book":
                 forward = roleActions.book(req, resp);
                 break;
+
+            case "signup":
+                roleActions.signUp(req, resp);
+                break;
         }
 
         if (forward != null) {

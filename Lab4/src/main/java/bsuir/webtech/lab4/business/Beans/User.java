@@ -6,7 +6,7 @@ public class User implements Serializable {
 
     private int id;
     private String name;
-    private String email;
+    private String login;
     private String passHash;
     private String role;
 
@@ -32,12 +32,12 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getLogin() {
+        return login;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassHash() {
@@ -60,10 +60,17 @@ public class User implements Serializable {
 
     }
 
-    public User(int id, String name, String email, String passHash, String role) {
+    public User(String name, String login, String passHash, String role) {
+        this.name = name;
+        this.login = login;
+        this.passHash = passHash;
+        this.role = role;
+    }
+
+    public User(int id, String name, String login, String passHash, String role) {
         this.id = id;
         this.name = name;
-        this.email = email;
+        this.login = login;
         this.passHash = passHash;
         this.role = role;
     }

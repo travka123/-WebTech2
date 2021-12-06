@@ -18,6 +18,10 @@ public abstract class Actions {
         resp.sendRedirect("/");
     }
 
+    public void signUp(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        resp.sendRedirect("/");
+    }
+
     public String book(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.sendRedirect("/");
         return null;

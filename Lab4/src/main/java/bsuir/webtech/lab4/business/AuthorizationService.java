@@ -41,4 +41,22 @@ public class AuthorizationService {
         userSession.setUserName(user.getName());
         return true;
     }
+
+    public boolean tryRegister(UserSession userSession, String login, String name, String passwordHash) {
+        if ((userSession == null) || (login == null) || (name == null) || (passwordHash == null)) {
+            return false;
+        }
+
+        if (login.length() <= 2) {
+            return false;
+        }
+
+        if (usersRepository.getAccountByLogin(login) != null) {
+            return false;
+        }
+
+        usersRepository.add(new User(name, login, passwordHash, "user"));
+
+        return true;
+    }
 }

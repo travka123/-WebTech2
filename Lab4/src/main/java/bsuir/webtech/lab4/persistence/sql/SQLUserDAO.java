@@ -35,6 +35,23 @@ public class SQLUserDAO extends UsersRepository {
         return user;
     }
 
+    @Override
+    public void add(User user) {
+        try {
+            PreparedStatement ps = databaseController.getPreparedStatement(
+                    "INSERT INTO USERS (name, login, pass_hash, role) VALUES (?, ?, ?, ?);"
+            );
+            ps.setString(1, user.getName());
+            ps.setString(2, user.getLogin());
+            ps.setString(3, user.getPassHash());
+            ps.setString(4, user.getRole());
+            ps.executeUpdate();
+
+        } catch (Exception ignore) {
+
+        }
+    }
+
     private User getNextUser(ResultSet resultSet) throws SQLException {
         User user = null;
         if (resultSet.next()) {

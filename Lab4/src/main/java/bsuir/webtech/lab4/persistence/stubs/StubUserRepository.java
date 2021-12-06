@@ -38,10 +38,15 @@ public class StubUserRepository extends UsersRepository {
     @Override
     public User getAccountByLogin(String login) {
         for (User user : users) {
-            if (user.getEmail().equals(login)) {
+            if (user.getLogin().equals(login)) {
                 return user;
             }
         }
         return null;
+    }
+
+    @Override
+    public void add(User user) {
+
     }
 }

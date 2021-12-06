@@ -19,7 +19,21 @@ public class GuestActions extends Actions {
             resp.sendRedirect("/");
         }
         else {
-            resp.sendRedirect("/action&type=signin?err=true");
+            resp.sendRedirect("/signin?err=true");
+        }
+    }
+
+    @Override
+    public void signUp(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        if (servicesAccessPoint.getAuthorizationService().tryRegister(
+                new ServletSession(req),
+                req.getParameter("login"),
+                req.getParameter("name"),
+                req.getParameter("password"))) {
+
+            resp.sendRedirect("/signin");
+        } else {
+            resp.sendRedirect("/signup?err=true");
         }
     }
 
