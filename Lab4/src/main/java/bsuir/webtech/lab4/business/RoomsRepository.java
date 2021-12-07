@@ -8,5 +8,5 @@ public abstract class RoomsRepository {
     public abstract List<Room> getRooms();
     public abstract List<Room> getVisibleRooms();
     public abstract Room getRoomById(int roomId);
-    public abstract void save(Room room);
+    public abstract void update(Room room);
 }

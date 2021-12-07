@@ -8,7 +8,6 @@ public class Room implements Serializable {
     private boolean hidden;
     private String name;
     private String description;
-    private String picture;
     private int price;
     private int bedsCount;
 
@@ -44,14 +43,6 @@ public class Room implements Serializable {
         this.description = description;
     }
 
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
     public int getPrice() {
         return price;
     }
@@ -71,12 +62,11 @@ public class Room implements Serializable {
     public Room() {
     }
 
-    public Room(int id, boolean hidden, String name, String description, String picture, int price, int bedsCount) {
+    public Room(int id, boolean hidden, String name, String description, int price, int bedsCount) {
         this.id = id;
         this.hidden = hidden;
         this.name = name;
         this.description = description;
-        this.picture = picture;
         this.price = price;
         this.bedsCount = bedsCount;
     }

@@ -79,8 +79,23 @@ public class SQLRoomDAO extends RoomsRepository {
     }
 
     @Override
-    public void save(Room room) {
+    public void update(Room room) {
+        try {
+            PreparedStatement ps = databaseController.getPreparedStatement(
+                    "UPDATE ROOMS SET hidden=?, name=?, description=?, price=?, beds_count=? WHERE id=?"
+            );
 
+            ps.setBoolean(1, room.isHidden());
+            ps.setString(2, room.getName());
+            ps.setString(3, room.getDescription());
+            ps.setInt(4, room.getPrice());
+            ps.setInt(5, room.getBedsCount());
+            ps.setInt(6, room.getId());
+            ps.executeUpdate();
+
+        } catch (Exception ignore) {
+
+        }
     }
 
     private Room getNextRoom(ResultSet resultSet) throws SQLException {
@@ -90,7 +105,6 @@ public class SQLRoomDAO extends RoomsRepository {
                     resultSet.getInt(1),
                     resultSet.getBoolean(2),
                     resultSet.getString(3),
-                    "",
                     resultSet.getString(4),
                     resultSet.getInt(5),
                     resultSet.getInt(6)

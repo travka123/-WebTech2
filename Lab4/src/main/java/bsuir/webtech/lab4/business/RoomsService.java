@@ -2,7 +2,6 @@ package bsuir.webtech.lab4.business;
 
 import bsuir.webtech.lab4.business.Beans.Room;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RoomsService {
@@ -23,5 +22,13 @@ public class RoomsService {
 
     public Room getRoomById(int roomId) {
         return roomsRepository.getRoomById(roomId);
+    }
+
+    public void changeRoomVisibility(int roomId) {
+        Room room = roomsRepository.getRoomById(roomId);
+        if (room != null) {
+            room.setHidden(!room.isHidden());
+            roomsRepository.update(room);
+        }
     }
 }

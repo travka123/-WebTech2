@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class UserActions extends Actions {
@@ -34,11 +33,17 @@ public class UserActions extends Actions {
         int room;
 
         try {
-            start = new Date(sdf.parse(req.getParameter("start")).getTime());
-            end = new Date(sdf.parse(req.getParameter("end")).getTime());
             room = Integer.parseInt(req.getParameter("room"));
 
-        } catch (ParseException | NumberFormatException ignored) {
+            try {
+                start = new Date(sdf.parse(req.getParameter("start")).getTime());
+                end = new Date(sdf.parse(req.getParameter("end")).getTime());
+            } catch (Exception ex) {
+                resp.sendRedirect("/booking?room=" + room + "&err=dateErr");
+                return null;
+            }
+
+        } catch (NumberFormatException ignored) {
             return "/404";
         }
 
@@ -55,7 +60,7 @@ public class UserActions extends Actions {
                 break;
 
             case INCORRECT_DATE_PARAMETERS:
-                resp.sendRedirect(req.getRequestURL().append("?room=").append(room).append("&err=dateErr").toString());
+                resp.sendRedirect("/booking?room=" + room + "&err=dateErr");
                 break;
 
             default:

@@ -15,6 +15,6 @@ public class NotFound extends Content {
 
     @Override
     public String get(UserSession session, ResourceBundle bundle) {
-        return "<h2 style=\"color:red;\">404 Страница не найдена</h2>";
+        return "<h2 style=\"color:red;\">" + bundle.getString("language.pagenotfound") + "</h2>";
     }
 }

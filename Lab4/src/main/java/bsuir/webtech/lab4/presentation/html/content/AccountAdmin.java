@@ -17,8 +17,8 @@ public class AccountAdmin extends Content {
     public String get(UserSession session, ResourceBundle bundle) {
         StringBuilder content = new StringBuilder();
         content.append("<div>");
-        content.append("<h2>Здравствуйте, " + session.getUserName() + "</h2>");
-        content.append("<h3>У аккаунта есть права администратора!</h3>");
+        content.append("<h2>" + bundle.getString("language.hello") + ", " + session.getUserName() + "</h2>");
+        content.append("<h3>" + bundle.getString("language.accountadmin") + "</h3>");
         content.append("</div>");
         return content.toString();
     }

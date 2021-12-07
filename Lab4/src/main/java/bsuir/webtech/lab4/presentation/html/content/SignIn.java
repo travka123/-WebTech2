@@ -24,17 +24,25 @@ public class SignIn extends Content {
     @Override
     public String get(UserSession session, ResourceBundle bundle) {
         StringBuilder content = new StringBuilder("<form action=\"signin\" method=\"post\">" +
-                "<h2>ВОЙТИ</h2>" +
-                "<span>Электронная почта:</span>" +
+                "<h2>" + bundle.getString("language.signin").toUpperCase() + "</h2>" +
+                "<div>" +
+                "<span>" + bundle.getString("language.login") + ":</span>" +
+                "<div>" +
                 "<input id=\"form-email\"name=\"email\" placeholder=\"email\">" +
-                "<span>Пароль:</span>" +
+                "</div>" +
+                "</div>" +
+                "<div>" +
+                "<span>" + bundle.getString("language.password") + ":</span>" +
+                "<div>" +
                 "<input id=\"form-password\"name=\"password\" type=\"password\" placeholder=\"password\">" +
+                "</div>" +
+                "</div>" +
                 "<input id=\"form-salt\" name=\"salt\" type=\"hidden\" value=\"" + salt + "\">" +
-                "<button id=\"form-btn\" type=\"submit\">Войти</button>"
+                "<button id=\"form-btn\" type=\"submit\">" + bundle.getString("language.signin") + "</button>"
         );
 
         if (error) {
-            content.append("<span>Неврное имя пользователя или пароль</span>");
+            content.append("<span>" + bundle.getString("language.signinerr") + "</span>");
         }
 
         content.append("</form>");

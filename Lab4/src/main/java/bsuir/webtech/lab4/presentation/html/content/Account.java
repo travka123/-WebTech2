@@ -6,6 +6,7 @@ import bsuir.webtech.lab4.business.ServicesAccessPoint;
 import bsuir.webtech.lab4.business.UserSession;
 import bsuir.webtech.lab4.presentation.html.Content;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -20,7 +21,9 @@ public class Account extends Content {
 
     @Override
     public List<String> getStyles() {
-        return Collections.emptyList();
+        List<String> styles = new ArrayList<>();
+        styles.add("css/roomcard.css");
+        return styles;
     }
 
     @Override
@@ -28,36 +31,57 @@ public class Account extends Content {
         StringBuilder content = new StringBuilder();
 
         content.append("<div>");
-        content.append("<h2>Здравствуйте, " + session.getUserName() + "</h2>");
-        content.append("<h3>Ваши бронирования:</h3>");
-        content.append("</div>");
+        content.append("<h2>" + bundle.getString("language.hello") + ", " + session.getUserName() + "</h2>");
 
-        content.append("<div>");
-        for (Reservation reservation : servicesAccessPoint.getBookingService().getReservationsOf(session.getUserId())) {
-            appendReservationCard(
-                    content,
-                    reservation,
-                    servicesAccessPoint.getRoomsService().getRoomById(reservation.getRoomId())
-            );
+        List<Reservation> reservations = servicesAccessPoint.getBookingService().getReservationsOf(session.getUserId());
+
+        if (reservations.size() != 0) {
+            content.append("<h3>" + bundle.getString("language.yourreservations")+ ":</h3>");
+            content.append("</div>");
+
+            content.append("<div>");
+
+
+
+            for (Reservation reservation : reservations) {
+                appendReservationCard(
+                        content,
+                        reservation,
+                        servicesAccessPoint.getRoomsService().getRoomById(reservation.getRoomId()),
+                        bundle
+                );
+            }
+        } else {
+            content.append("<h4>" + bundle.getString("language.nobook")+"</h4>");
         }
+
+
         content.append("</div>");
 
         return content.toString();
     }
 
-    protected void appendReservationCard(StringBuilder content, Reservation reservation, Room room) {
-        content.append("<div>");
+    protected void appendReservationCard(StringBuilder content, Reservation reservation, Room room, ResourceBundle bundle) {
+        content.append("<div class=\"room-card\">");
 
         content.append("<div>");
-        content.append(room.getName());
-        content.append(room.getDescription());
+        content.append("<div>");
+        content.append(bundle.getString(room.getName()));
+        content.append("</div>");
+        content.append("<div>");
+        content.append(bundle.getString(room.getDescription()));
+        content.append("</div>");
         content.append("</div>");
 
         content.append("<div>");
-        content.append("<span>Дата заезда:</span>");
+        content.append("<div>");
+        content.append("<span>" + bundle.getString("language.arrivaldate") + ":</span>");
         content.append(reservation.getStart());
-        content.append("<span>Дата выезда:</span>");
+        content.append("</div>");
+        content.append("<div>");
+        content.append("<span>" + bundle.getString("language.dateofdeparture") + "</span>");
         content.append(reservation.getEnd());
+        content.append("</div>");
         content.append("</div>");
 
         content.append("</div>");

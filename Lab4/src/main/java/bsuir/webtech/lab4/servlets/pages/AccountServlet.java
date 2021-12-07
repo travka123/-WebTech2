@@ -32,6 +32,9 @@ public class AccountServlet extends HttpServlet {
             case User.UserRole.admin:
                 resp.getWriter().write(adminView.get(session));
                 break;
+
+            default:
+                getServletContext().getRequestDispatcher("/404").forward(req, resp);
         }
     }
 }

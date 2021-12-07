@@ -25,7 +25,10 @@ public class BookingServlet extends HttpServlet {
         if (Objects.equals(session.getUserRole(), User.UserRole.user)) {
 
             try {
-                resp.getWriter().write(new View(new Header(), new Booking(Integer.parseInt(req.getParameter("room")))).get(session));
+                resp.getWriter().write(new View(new Header(), new Booking(
+                        Integer.parseInt(req.getParameter("room")),
+                        req.getParameter("err") != null
+                )).get(session));
             }
             catch (Exception ignore) {
                 getServletContext().getRequestDispatcher("/404").forward(req, resp);

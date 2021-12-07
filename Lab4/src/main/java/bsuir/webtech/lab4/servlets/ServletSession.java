@@ -11,7 +11,6 @@ public class ServletSession extends UserSession {
 
     private final HttpSession session;
     private final Locale locale;
-    private String lang = null;
 
     public ServletSession(HttpServletRequest req) {
         this.session = req.getSession();
@@ -57,8 +56,10 @@ public class ServletSession extends UserSession {
     @Override
     public Locale getUserLocale() {
 
+        Locale lang = (Locale) session.getAttribute("lang");
+
         if (lang != null) {
-            return new Locale(lang);
+            return lang;
         }
 
         return locale;
@@ -66,7 +67,7 @@ public class ServletSession extends UserSession {
 
     @Override
     public void setUserLocale(Locale locale) {
-        this.lang = lang;
+        session.setAttribute("lang", locale);
     }
 
     @Override

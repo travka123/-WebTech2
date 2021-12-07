@@ -23,25 +23,27 @@ public class Header extends Content {
 
         content.append("<div>");
         content.append("<div class=\"title\">");
-        content.append(HtmlUtils.createLink("/", "<h1>Гостиница #1</h1></a>"));
+        content.append(HtmlUtils.createLink("/", "<h1>" + bundle.getString("language.title") + "</h1></a>"));
         content.append("</div>");
 
         content.append("<div class=\"menu\">");
-        content.append(HtmlUtils.createLink("/suggestions", "Предложения"));
+        content.append(HtmlUtils.createLink("/suggestions", bundle.getString("language.suggestions")));
         content.append("</div>");
 
         content.append("<div class=\"options\">");
         if (session.isAuthorized()) {
-            content.append(HtmlUtils.createLink("/account", "Аккаунт"));
+            content.append(HtmlUtils.createLink("/account", bundle.getString("language.account")));
             content.append(" | ");
-            content.append(HtmlUtils.createLink("/action?type=exit", "Выход"));
+            content.append(HtmlUtils.createLink("/action?type=exit", bundle.getString("language.exit")));
         } else {
-            content.append(HtmlUtils.createLink("/signin", "Вход"));
+            content.append(HtmlUtils.createLink("/signin", bundle.getString("language.signin")));
             content.append(" | ");
-            content.append(HtmlUtils.createLink("/signup", "Регистрация"));
+            content.append(HtmlUtils.createLink("/signup", bundle.getString("language.signup")));
         }
         content.append(" | ");
-        content.append(HtmlUtils.createLink("/", "Сменить язык"));
+        content.append(HtmlUtils.createLink("/action?type=changelang&lang=ru", "RU"));
+        content.append(" | ");
+        content.append(HtmlUtils.createLink("/action?type=changelang&lang=en", "EN"));
         content.append("</div>");
 
         content.append("</div>");

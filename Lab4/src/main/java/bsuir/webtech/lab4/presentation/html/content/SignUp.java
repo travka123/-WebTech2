@@ -23,17 +23,29 @@ public class SignUp extends Content {
     @Override
     public String get(UserSession session, ResourceBundle bundle) {
         StringBuilder content = new StringBuilder("<form action=\"signup\" method=\"post\">" +
-                "<h2>Регистрация</h2>" +
-                "<span>Логин:</span>" +
+                "<h2>" + bundle.getString("language.signup").toUpperCase() + "</h2>" +
+                "<div>" +
+                "<span>" + bundle.getString("language.login") + ":</span>" +
+                "<div>" +
                 "<input id=\"form-login\" name=\"login\" placeholder=\"login\">" +
-                "<span>Имя:</span>" +
+                "</div>" +
+                "</div>" +
+                "<div>" +
+                "<span>" + bundle.getString("language.name") + ":</span>" +
+                "<div>" +
                 "<input id=\"form-name\" name=\"name\" placeholder=\"name\">" +
-                "<span>Пароль:</span>" +
+                "</div>" +
+                "</div>" +
+                "<div>" +
+                "<span>" + bundle.getString("language.password") + ":</span>" +
+                "<div>" +
                 "<input id=\"form-password\" name=\"password\" type=\"password\" placeholder=\"password\">" +
-                "<button id=\"form-btn\"type=\"submit\">Зарегестрироваться</button>");
+                "</div>" +
+                "</div>" +
+                "<button id=\"form-btn\"type=\"submit\">" + bundle.getString("language.signup") + "</button>");
 
         if (error) {
-            content.append("Имя пользователя слишком короткое, или уже занято");
+            content.append(bundle.getString("language.signuperr"));
         }
 
         content.append("<script type=\"text/javascript\" src=\"/js/MD5.js\"></script>");

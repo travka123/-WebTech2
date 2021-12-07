@@ -59,6 +59,17 @@ public class ActionsDispatcherServlet extends HttpServlet {
             case "signup":
                 roleActions.signUp(req, resp);
                 break;
+
+            case "changeroomvisibility":
+                roleActions.changeRoomStatus(req, resp);
+                break;
+
+            case "changelang":
+                roleActions.changeLang(req, resp);
+                break;
+
+            default:
+                getServletContext().getRequestDispatcher("/404").forward(req, resp);
         }
 
         if (forward != null) {

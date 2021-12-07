@@ -9,9 +9,11 @@ import java.util.ResourceBundle;
 
 public class Booking extends Content {
     private final int roomId;
+    private final boolean error;
 
-    public Booking(int roomId) {
+    public Booking(int roomId, boolean error) {
         this.roomId = roomId;
+        this.error = error;
     }
 
     @Override
@@ -22,13 +24,13 @@ public class Booking extends Content {
     @Override
     public String get(UserSession session, ResourceBundle bundle) {
         return "<form action=\"/action\"method=\"post\">" +
-                "Дата заезда:" +
+                bundle.getString("language.arrivaldate") + ":" +
                 "<input type=\"date\" name=\"start\">" +
-                "Дата выезда:" +
+                bundle.getString("language.dateofdeparture") + ":" +
                 "<input type=\"date\" name=\"end\">" +
                 "<input type=\"hidden\" name=\"room\" value=\"" + roomId + "\">" +
                 "<input type=\"hidden\" name=\"type\" value=\"book\">" +
-                "<button id=\"form-btn\" type=\"submit\">Забронировать</button>" +
-                "</form>";
+                "<button id=\"form-btn\" type=\"submit\">" + bundle.getString("language.booknow") + "</button>" +
+                "</form>" + (error ? bundle.getString("language.timeerr") : "");
     }
 }
