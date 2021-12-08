@@ -40,10 +40,10 @@ insert into ROOMS (hidden, name, description, price, beds_count)
 values (false, 'room3', 'desc3', 10400, 2);
 
 insert into ROOMS (hidden, name, description, price, beds_count)
-values (true, 'room3', 'desc4', 15500, 2);
+values (true, 'room4', 'desc4', 15500, 2);
 
 insert into ROOMS (hidden, name, description, price, beds_count)
-values (false, 'room3', 'desc5', 17600, 2);
+values (false, 'room5', 'desc5', 17600, 2);
 
 create table RESERVATIONS
 (
