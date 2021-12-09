@@ -51,9 +51,6 @@ public class SaltShaker {
             salts.remove(used);
         }
 
-        if (used.getLifeTimeMs() > saltExpireTimeMs) {
-            return false;
-        }
-        return true;
+        return used.getLifeTimeMs() <= saltExpireTimeMs;
     }
 }
